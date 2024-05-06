@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import HeroGroup from './components/HeroGroup';
 
 function App() {
   const [heroArray, setHeroArray] = useState([]);
@@ -11,7 +12,11 @@ function App() {
     });
   }, []);
 
-  return <></>;
+  return (
+    <>
+      <HeroGroup heroes={heroArray} />
+    </>
+  );
 }
 
 export default App;
