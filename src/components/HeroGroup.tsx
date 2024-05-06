@@ -2,7 +2,7 @@ interface Props {
   heroes: Hero[];
 }
 
-interface Hero {
+export interface Hero {
   attack_type: string;
   id: number;
   legs: number;
@@ -16,7 +16,15 @@ const HeroGroup = ({ heroes }: Props) => {
   return (
     <div>
       {heroes.map((hero) => {
-        return <div>{hero.localized_name}</div>;
+        return (
+          <img
+            key={hero.id}
+            src={`https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/${hero.name.replace(
+              'npc_dota_hero_',
+              ''
+            )}.png`}
+          />
+        );
       })}
     </div>
   );
