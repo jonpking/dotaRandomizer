@@ -1,5 +1,7 @@
+import './App.css';
 import { useEffect, useState } from 'react';
 import HeroGroup, { Hero } from './components/HeroGroup';
+import FilterGroup from './components/FilterGroup';
 
 function heroSort(a: Hero, b: Hero) {
   if (a.localized_name < b.localized_name) {
@@ -25,20 +27,35 @@ function App() {
   }, []);
 
   return (
-    <>
-      <HeroGroup
-        heroes={heroArray.filter((hero) => hero.primary_attr === 'str')}
-      />
-      <HeroGroup
-        heroes={heroArray.filter((hero) => hero.primary_attr === 'agi')}
-      />
-      <HeroGroup
-        heroes={heroArray.filter((hero) => hero.primary_attr === 'int')}
-      />
-      <HeroGroup
-        heroes={heroArray.filter((hero) => hero.primary_attr === 'all')}
-      />
-    </>
+    <div>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          minHeight: '90vh',
+        }}
+      >
+        <div className="pageGrid">
+          <HeroGroup
+            heroes={heroArray.filter((hero) => hero.primary_attr === 'str')}
+            title="STRENGTH"
+          />
+          <HeroGroup
+            heroes={heroArray.filter((hero) => hero.primary_attr === 'agi')}
+            title="AGILITY"
+          />
+          <HeroGroup
+            heroes={heroArray.filter((hero) => hero.primary_attr === 'int')}
+            title="INTELLIGENCE"
+          />
+          <HeroGroup
+            heroes={heroArray.filter((hero) => hero.primary_attr === 'all')}
+            title="UNIVERSAL"
+          />
+        </div>
+      </div>
+      <FilterGroup />
+    </div>
   );
 }
 

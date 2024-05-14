@@ -1,5 +1,8 @@
+import './HeroGroup.css';
+
 interface Props {
   heroes: Hero[];
+  title: string;
 }
 
 export interface Hero {
@@ -12,12 +15,17 @@ export interface Hero {
   roles: string[];
 }
 
-const HeroGroup = ({ heroes }: Props) => {
+const HeroGroup = ({ heroes, title }: Props) => {
   return (
     <div>
+      <h2>
+        <img src={`/images/${title.toLowerCase()}.webp`} />
+        {title}
+      </h2>
       {heroes.map((hero) => {
         return (
           <img
+            className="heroImage"
             key={hero.id}
             src={`https://cdn.cloudflare.steamstatic.com/apps/dota2/images/dota_react/heroes/${hero.name.replace(
               'npc_dota_hero_',
